@@ -2,6 +2,19 @@ import express from "express";
 import dotenv from "dotenv";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
+<<<<<<< Updated upstream
+=======
+import connectDB from "./config/db.js";
+// import swaggerUI from "swagger-ui-express";
+// import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express"; //https://youtu.be/y31BLaEJ4JM?t=4426
+import {specs} from "./config/swagger.js";
+
+// Import routes
+import authRoutes from "./routes/authRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
+>>>>>>> Stashed changes
 
 // Load env vars
 dotenv.config();
@@ -55,6 +68,13 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 // Debug middleware for order routes
 
 // Routes
+<<<<<<< Updated upstream
+=======
+app.use("/api/auth",authRoutes);
+app.use("/api/users",userRoutes);
+app.use("/api/product",productRoutes);//https://youtu.be/y31BLaEJ4JM?t=8597
+
+>>>>>>> Stashed changes
 
 // API Documentation
 
