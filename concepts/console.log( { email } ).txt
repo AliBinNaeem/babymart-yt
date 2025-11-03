@@ -1,0 +1,57 @@
+Perfect — let’s break down what this line does 👇
+
+🧩 Code:
+console.log("Login attempt", { email });
+
+🔍 Step-by-step explanation
+1️⃣ console.log(...)
+
+This prints messages to your terminal (server console), not to the browser.
+
+It’s used for debugging — to check what data your backend is receiving.
+
+So whenever this line runs, you’ll see something like this in your Node.js terminal:
+
+Login attempt { email: 'user@example.com' }
+
+2️⃣ "Login attempt"
+
+This is just a label — a string that helps you identify what’s being logged.
+
+3️⃣ { email }
+
+This is an object shorthand in JavaScript.
+It’s the same as:
+
+{ email: email }
+
+
+It creates an object with a property email whose value is the variable email.
+
+So if email = 'user@gmail.com',
+then { email } becomes:
+
+{ email: 'user@gmail.com' }
+
+✅ Why use this
+
+Logging data like this is super useful in development — it helps you confirm:
+
+that req.body.email is coming through properly,
+
+and that your frontend is sending the correct information.
+
+🧠 Example in context:
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  console.log("Login attempt", { email });
+
+  const user = await User.findOne({ email });
+  ...
+});
+
+
+When someone tries to log in, your terminal might show:
+
+Login attempt { email: 'john@example.com' }

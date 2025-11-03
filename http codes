@@ -1,0 +1,8 @@
+201
+HTTP status code 201 Created indicates that the client's request was successful and a new source has been created on the sewer. This is commonly retumed in sponse to a POST request.
+
+400
+The HTTP 400 Bad Request client error response status code indicates that the server cannot or will not process the request due to something perceived as a client error. This means the request sent from the client (e.g., your browser or an application) to the server was malformed, invalid, or contained incorrect syntax, preventing the server from understanding and fulfilling it. 
+
+401
+An HTTP 401 error means that a request to a server failed because it lacks valid authentication credentials, essentially a "login required" message. This can be caused by an incorrect username/password, an expired session, or missing authentication information, and it indicates that the server is asking the client to authenticate itself to access the requested resource. 

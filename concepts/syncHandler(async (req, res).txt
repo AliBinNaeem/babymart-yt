@@ -1,0 +1,76 @@
+const loginUser = asyncHandler(async (req, res) => {});
+
+1️⃣ Function name
+
+loginUser — this is a controller function for handling user login.
+It will typically:
+
+receive login data (like email & password) from the request body,
+
+check credentials against the database,
+
+and send a response (like a token or user info).
+2️⃣ asyncHandler
+
+This is a helper function (often imported from the package express-async-handler).
+
+It wraps an async Express route handler to automatically catch any errors and pass them to Express’s next() error middleware — so you don’t need to manually use try...catch.
+
+import asyncHandler from 'express-async-handler'
+
+
+Without asyncHandler, you’d have to do:
+
+const loginUser = async (req, res, next) => {
+  try {
+    // login logic
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+With asyncHandler, it becomes simpler:
+
+const loginUser = asyncHandler(async (req, res) => {
+  // login logic
+});
+
+
+If an error is thrown inside the async function, asyncHandler automatically catches it and forwards it to Express’s error handler.
+
+3️⃣ Parameters
+
+req: the request object (contains data from the client, like req.body.email, req.body.password).
+
+res: the response object (used to send data back, e.g., res.json({ message: 'Login successful' })).
+
+4️⃣ Example complete version
+
+Here’s what a full loginUser might look like:
+
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  // Find user by email
+  const user = await User.findOne({ email });
+
+  if (user && (await user.matchPassword(password))) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(401);
+    throw new Error('Invalid email or password');
+  }
+});
+
+
+✅ In short:
+asyncHandler(async (req, res) => { ... })
+→ defines an asynchronous Express route handler,
+→ automatically catches async errors,
+→ and makes code cleaner without try...catch blocks.
