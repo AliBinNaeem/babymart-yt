@@ -3,16 +3,33 @@ import { createBrowserRouter, RouterProvider } from 'react-router' ///https://yo
 import './index.css'
 import App from './App.tsx'
 import Login from './pages/Login.tsx'
+import Register from './pages/Register.tsx'
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
+  // {
+  //   path: "/",
+  //   element: <App />,
+  // },
+  // login
   {
     path: "/login",
     element: <Login />,
   },
+  // register
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      
+    ]
+  }
+
+
+
 ])
 
 createRoot(document.getElementById('root')!).render(
