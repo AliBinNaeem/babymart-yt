@@ -1,3 +1,5 @@
 npm i react-router
 
 npx shadcn@latest add accordion badge card collapsible command dialog input label popover scroll-area separator table textarea tooltip sonner alert-dialog select skeleton table
+
+https://youtu.be/sE_F02e76dQ?t=2367 
